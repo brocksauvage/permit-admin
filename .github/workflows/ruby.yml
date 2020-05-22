@@ -24,4 +24,4 @@ jobs:
       with:
         ruby-version: 2.6
     - name: Install dependencies
-      run: bundle exec install
+      run: bundle install
