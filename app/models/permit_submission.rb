@@ -1,0 +1,2 @@
+class PermitSubmission < ApplicationRecord
+end

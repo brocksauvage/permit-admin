@@ -29,9 +29,10 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: akhileshns/heroku-deploy@v3.0.4
-        with:
-          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-          heroku_app_name: permit-admin
-          heroku_email: ${{ secrets.EMAIL }}
+    - uses: actions/checkout@v2
+    - name: Migrate database
+      env:
+        HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+      run: heroku run rake db:migrate -a permit-admin
+    - name: Update code
+      run: git push heroku master
