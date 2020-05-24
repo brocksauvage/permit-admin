@@ -36,5 +36,5 @@ jobs:
       run: heroku run rake db:migrate -a permit-admin
     - name: Update code
       run: |
-        git remote add heroku https://git.heroku.com/permit-admin.git;
+        heroku git:remote --app permit-admin
         git push heroku master;
