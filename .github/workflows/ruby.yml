@@ -34,7 +34,8 @@ jobs:
       env:
         HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
       run: heroku run rake db:migrate -a permit-admin
-    - name: Update code
-      run: |
-        heroku git:remote --app permit-admin
-        git push heroku master;
+    - uses: akhileshns/heroku-deploy@v3.0.4
+      with:
+        heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+        heroku_app_name: permit-admin
+        heroku_email: ${{ secrets.EMAIL }}
