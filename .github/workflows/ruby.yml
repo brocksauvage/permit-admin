@@ -35,4 +35,6 @@ jobs:
         HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
       run: heroku run rake db:migrate -a permit-admin
     - name: Update code
-      run: git push heroku master
+      run: |
+        git remote add heroku https://git.heroku.com/permit-admin.git;
+        git push heroku master;
