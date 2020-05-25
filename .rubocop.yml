@@ -1,0 +1,14 @@
+Style/FrozenStringLiteralComment:
+  Enabled: false
+Style/Documentation:
+  Enabled: false
+Layout/FirstArrayElementIndentation:
+  EnforcedStyle: consistent
+
+AllCops:
+  NewCops: enable
+  Exclude:
+    - 'bin/bundle'
+    - 'vendor/**/*'
+    - 'db/migrate/*'
+

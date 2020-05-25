@@ -1,5 +1,5 @@
 class PermitSubmission < ApplicationRecord
-  enum status: [ :accepted, :filed, :denied ]
+  enum status: %i[accepted filed denied]
   belongs_to :user, optional: true
 
   attribute :name, :string
@@ -7,5 +7,4 @@ class PermitSubmission < ApplicationRecord
   attribute :user_id, :uuid
   attribute :deadline, :datetime
   attribute :agency, :string
-
 end

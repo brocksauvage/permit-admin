@@ -30,6 +30,8 @@ jobs:
           ${{ runner.os }}-gems-
     - name: Install dependencies
       run: bundle install --without development
+    - name: Run rubocop
+      run: bundle exec rubocop .
 
   deploy:
     needs: build

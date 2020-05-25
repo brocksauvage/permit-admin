@@ -1,12 +1,11 @@
 <h1>Permits</h1>
 
-<p>Name</p>
-<%= @permits.map(&:name) %>
-
-<p>Agency</p>
-<%= @permits.map(&:agency) %>
-
-<p>Deadline</p>
-<%= @permits.map(&:deadline).map(&:to_s) %>
-
+<div>Name</div>
+<div>Agency</div>
+<div>Deadline</div>
+<% @permits.map do |permit| %>
+  <div><%= permit.name %></div>
+  <div><%= permit.agency %></div>
+  <div><%= permit.deadline %></div>
+<% end %>
 <button href="/permits/new">New Permit</button>
