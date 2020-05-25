@@ -1,5 +1,12 @@
-<h1>Updated world</h1>
+<h1>Permits</h1>
 
+<p>Name</p>
 <%= @permits.map(&:name) %>
+
+<p>Agency</p>
 <%= @permits.map(&:agency) %>
-<%= @permits.map(&:deadline) %>
+
+<p>Deadline</p>
+<%= @permits.map(&:deadline).map(&:to_s) %>
+
+<button href="/permits/new">New Permit</button>

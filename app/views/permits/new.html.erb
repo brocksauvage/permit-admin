@@ -1,0 +1,13 @@
+<h1>New Permit</h1>
+
+<%= form_with(url: "/permits", method: "post") do %>
+  <%= label_tag(:name, "Name") %>
+  <%= text_field(:permit, :name) %>
+  <%= label_tag(:name, "Agency") %>
+  <%= text_field(:permit, :agency) %>
+  <%= label_tag(:name, "Status") %>
+  <%= select(:permit, :status, [["accepted", "accepted"], ["denied", "denied"], ["filed", "filed"]]) %>
+  <%= label_tag(:name, "Deadline") %>
+  <%= date_field(:permit, :deadline) %>
+  <%= submit_tag("Create") %>
+<% end %>
