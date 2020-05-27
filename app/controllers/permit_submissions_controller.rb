@@ -7,10 +7,6 @@ class PermitSubmissionsController < ActionController::Base
     @permits = current_user.permit_submissions
   end
 
-  def new
-    @permit = current_user.permit_submissions.build
-  end
-
   def destroy
     current_user.permit_submissions.find(params.fetch(:id)).destroy!
     redirect_to permit_submissions_path

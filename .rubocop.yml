@@ -10,5 +10,6 @@ AllCops:
   Exclude:
     - 'bin/bundle'
     - 'vendor/**/*'
-    - 'db/migrate/*'
+    - 'db/**/*'
+    - '**/spec_helper.rb'
 
