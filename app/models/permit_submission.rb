@@ -1,6 +1,7 @@
 class PermitSubmission < ApplicationRecord
   enum status: %i[accepted filed denied]
   belongs_to :user, optional: true
+  has_many :permit_documents, dependent: :destroy
 
   attribute :name, :string
   attribute :status, :string

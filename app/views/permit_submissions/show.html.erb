@@ -1,0 +1,9 @@
+<h1>Permit</h1>
+Name: <%= @permit.name %>
+Agency: <%= @permit.agency %>
+Deadline: <%= @permit.deadline %>
+Status: <%= @permit.status %>
+Documents:
+<% @permit.permit_documents.map(&:document).map do |document| %>
+  <%= image_tag url_for(document) %>
+<% end %>

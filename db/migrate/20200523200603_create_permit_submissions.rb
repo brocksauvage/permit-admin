@@ -5,7 +5,6 @@ class CreatePermitSubmissions < ActiveRecord::Migration[6.0]
       t.string :agency
       t.date :deadline
       t.string :status
-
       t.belongs_to :user, type: :uuid, index: true, null: false
 
       t.timestamps

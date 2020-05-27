@@ -6,20 +6,18 @@ user.permit_submissions.create!([
     name: 'Trade Waste Removal License',
     agency: 'NY Department of Motor Vehicles',
     status: 'filed',
-    deadline: DateTime.new(2012, 8, 29, 22, 35, 0)
-  },
+    deadline: Date.today
+},
   {
     name: 'Air pollution permit',
     agency: 'New York Battery Park City Authority',
     status: 'denied',
-    deadline: Date.new('08-10-1990')
-  },
-  {
+    deadline: Date.today
+},
+{
     name: 'Special truck pollution license',
     agency: 'NY Department of Motor Vehicles',
     status: 'accepted',
-    deadline: Date.new('08-10-1990')
+    deadline: Date.today
   }
 ])
-PermitSubmission.count
-print user.permit_submissions.count
