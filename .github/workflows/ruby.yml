@@ -22,22 +22,22 @@ jobs:
       uses: ruby/setup-ruby@v1
       with:
         ruby-version: 2.6.3
+    - name: Migrate database
+      env:
+        HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+      run: heroku run rake db:migrate -a permit-admin
     - uses: actions/cache@v1
       with:
         path: vendor/bundle
         key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
         restore-keys: |
           ${{ runner.os }}-gems-
-    - name: Migrate database
-      env:
-        HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-      run: heroku run rake db:migrate -a permit-admin
     - name: Install dependencies
       run: bundle install --without development
     - name: Run rubocop
       run: bundle exec rubocop .
     - name: Run rspec tests
-      run: bundle exec rspec spec
+      run: bundle exec rake db:create RAILS_ENV=test; bundle exec rake db:schema:load RAILS_ENV=test; bundle exec rspec spec
 
   deploy:
     needs: build
