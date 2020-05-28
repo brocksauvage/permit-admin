@@ -7,9 +7,7 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/cache@v1
       with:
@@ -37,7 +35,7 @@ jobs:
     - name: Run rubocop
       run: bundle exec rubocop .
     - name: Run rspec tests
-      run: bundle exec rake db:create RAILS_ENV=test; bundle exec rake db:schema:load RAILS_ENV=test; bundle exec rspec spec
+      run: bundle exec rspec spec
 
   deploy:
     needs: build

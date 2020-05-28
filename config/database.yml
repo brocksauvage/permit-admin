@@ -11,7 +11,7 @@ default: &default
 
 development:
   <<: *default
-  host: localhost
+  host: <%= ENV['DATABASE_TEST_HOST'] %>
   port: 5432
   database: permit-admin
 
