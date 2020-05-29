@@ -34,8 +34,8 @@ jobs:
       run: bundle install --without development
     - name: Run rubocop
       run: bundle exec rubocop .
-    - name: Run rspec tests
-      run: bundle exec rspec spec
+#    - name: Run rspec tests
+#      run: bundle exec rspec spec
 
   deploy:
     needs: build
