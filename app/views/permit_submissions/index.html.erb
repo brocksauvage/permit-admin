@@ -1,15 +1,15 @@
 <h1>Permits</h1>
 
-<div class="inline-block">Name</div>
-<div class="inline-block">Agency</div>
-<div class="py-3 inline-block">Deadline</div>
+<div class="inline-block p-5">Name</div><%= link_to "Sort", permits_path(sort_by: 'name') %>
+<div class="inline-block p-5">Agency</div><%= link_to "Sort", permits_path(sort_by: 'name') %>
+<div class="inline-block p-5">Deadline</div><%= link_to "Sort", permits_path(sort_by: 'name') %>
 <% @permits.map do |permit| %>
   <div class="py-1">
-    <div class="inline-block"><%= permit.name %></div>
-    <div class="inline-block"><%= permit.agency %></div>
-    <div class="inline-block"><%= permit.deadline %></div>
-    <a href="/permits/<%= permit.id %>">Show
-    <%= button_to "Destroy", permit, method: :delete %>
+    <div class="inline-block p-5"><%= permit.name %></div>
+    <div class="inline-block p-5"><%= permit.agency %></div>
+    <div class="inline-block p-5"><%= permit.deadline %></div>
+    <%= link_to 'Show documents', "/permits/#{permit.id}" %>
+    <%= button_to "Destroy", permit, method: :delete, form_class: "inline-block p-5" %>
   </div>
 <% end %>
 <a href="/permits/new">New Permit</a>

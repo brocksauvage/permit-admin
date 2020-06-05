@@ -4,7 +4,12 @@ class PermitSubmissionsController < ActionController::Base
   layout 'application'
 
   def index
-    @permits = current_user.permit_submissions
+    sort_by = permit_index_params.fetch(:sort_by, nil)
+    if sort_by
+      @permits = current_user.permit_submissions.order(sort_by)
+    else
+      @permits = current_user.permit_submissions
+    end
   end
 
   def destroy
@@ -34,11 +39,15 @@ class PermitSubmissionsController < ActionController::Base
 
   private
 
+  def permit_index_params
+    params.permit(:sort_by)
+  end
+
   def permit_params
     params.require(:permit).permit(:name, :agency, :deadline, :status).merge(user_id: current_user.id)
   end
 
   def permit_document_params
-    params.fetch(:permit_documents).permit(:document).fetch(:document)
+    params.fetch(:permit_documents, {}).permit(:document, {}).fetch(:document, nil)
   end
 end
