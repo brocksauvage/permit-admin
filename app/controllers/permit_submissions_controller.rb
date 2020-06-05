@@ -5,11 +5,11 @@ class PermitSubmissionsController < ActionController::Base
 
   def index
     sort_by = permit_index_params.fetch(:sort_by, nil)
-    if sort_by
-      @permits = current_user.permit_submissions.order(sort_by)
-    else
-      @permits = current_user.permit_submissions
-    end
+    @permits = if sort_by
+                 current_user.permit_submissions.order(sort_by)
+               else
+                 current_user.permit_submissions
+               end
   end
 
   def destroy
