@@ -1,4 +1,4 @@
-class PermitSubmissionsController < ActionController::Base
+class PermitSubmissionsController < ApplicationController
   before_action :authenticate_user!
 
   layout 'application'
@@ -10,11 +10,6 @@ class PermitSubmissionsController < ActionController::Base
                else
                  current_user.permit_submissions
                end
-  end
-
-  def destroy
-    current_user.permit_submissions.find(params.fetch(:id)).destroy!
-    redirect_to permit_submissions_path
   end
 
   def show

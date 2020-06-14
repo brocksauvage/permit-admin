@@ -3,10 +3,13 @@
 <div class="inline-block p-5">Name</div><%= link_to "Sort", permits_path(sort_by: 'name') %>
 <div class="inline-block p-5">Agency</div><%= link_to "Sort", permits_path(sort_by: 'agency') %>
 <div class="inline-block p-5">Deadline</div><%= link_to "Sort", permits_path(sort_by: 'deadline') %>
+<div class="inline-block p-5">Author</div><%= link_to "Sort", permits_path(sort_by: 'author') %>
 <% @permits.map do |permit| %>
   <div class="py-1">
     <%= render 'shared/permit_row', permit: permit %>
-    <%= link_to 'Show documents', permit_submission_path(id: permit.id) %>
+    <div class="inline-block p-5"><%= permit.user_name %></div>
+    <%= link_to 'Show documents', team_permit_submission_path(team_id: @team.id, permit_id: permit.id) %>
+    <%= button_to "Destroy", permit, method: :delete, form_class: "inline-block p-5" %>
   </div>
 <% end %>
 <a href="/permits/new">New Permit</a>

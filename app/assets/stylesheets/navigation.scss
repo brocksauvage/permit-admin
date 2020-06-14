@@ -1,0 +1,45 @@
+.Avatar {
+  padding: 0 1rem;
+
+	.Avatar-image {
+	  height: 2rem;
+	  width: 2rem;
+	  background-color: #fff;
+	  border-radius: 50%;
+	  display: inline-block;
+	}
+}
+
+.Navigation {
+  display: flex;
+  height: 100%;
+  list-style: none;
+  margin: 0;
+  padding-left: 0;
+
+	a {
+	  text-decoration: none;
+	}
+
+
+
+	.Navigation-item {
+	  display: block;
+	  padding: 0 1rem;
+	  position: relative;
+	  text-decoration: none;
+	  transition-duration: 0.5s;
+	  height: 100%;
+	  align-items: center;
+	  display: flex;
+
+	  a {
+	  	color: #fff;
+		}
+
+		&:hover {
+		  background: red;
+		  cursor: pointer;
+		}
+	}
+}
