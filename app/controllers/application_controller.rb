@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   private
+
   def current_team
     current_user.team
   end

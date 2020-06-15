@@ -4,7 +4,6 @@ class User < ApplicationRecord
 
   enum role: { manager: 'manager', user: 'user' }
 
-
   attribute :first_name, :string
   attribute :last_name, :string
   # Include default devise modules. Others available are:
@@ -13,6 +12,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   def name
-    return "#{first_name} #{last_name}"
+    "#{first_name} #{last_name}"
   end
 end
