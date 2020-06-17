@@ -14,14 +14,11 @@
     <%= image_tag('logo.png', class: 'h-full') %>
     <nav role="navigation">
       <ul class="Navigation">
-        <li class="Navigation-item">
-          <a href="#">One</a>
-        </li>
         <li class="Navigation-item Dropdown" aria-haspopup="true" aria-expanded="false">
           <div class="Avatar"><div class="Avatar-image"></div></div>
           <ul class="Dropdown-list">
             <li class="Dropdown-listItem"><a href="/logout">Logout</a></li>
-            <li class="Dropdown-listItem"><a href="/logout">Logout</a></li>
+            <li class="Dropdown-listItem"><%= link_to 'Team', team_path(team_id: current_user.team_id) %>
           </ul>
         </li>
       </ul>

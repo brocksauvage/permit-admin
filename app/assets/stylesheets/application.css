@@ -12,6 +12,8 @@
  *
  *= require_tree .
  *= require navigation
+ *= require utils
+ *= require table
  *= require dropdown
  *= require_self
  */
@@ -23,10 +25,6 @@ body {
 
 h1 {
 	margin: 0;
-}
-
-.x-bg-blue {
-	background-color: #09347A;
 }
 
 .grid {

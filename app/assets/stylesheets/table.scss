@@ -1,0 +1,16 @@
+.Table {
+	.Table-header {
+		background: #0A502B;
+		border: 1px solid #ECEEF3;
+		box-sizing: border-box;
+		border-radius: 12px 12px 0px 0px;
+	}
+	.Table-body {
+		border: 1px solid #ECEEF3;
+		box-sizing: border-box;
+		border-radius: 0px 0px 12px 12px;
+	}		
+	.Table-row {
+		background: rgba(229, 229, 229, 0.27);
+	}	
+}

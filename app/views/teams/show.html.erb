@@ -1,0 +1,8 @@
+<h1><%= @team.name %></h1>
+
+<h2>Members</h2>
+<p>Admin: <%= @team.manager_name %></p>
+
+<% @team.users.each do |user| %>
+	<p><%= user.name %></p>
+<% end %>

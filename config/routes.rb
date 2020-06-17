@@ -10,11 +10,13 @@ Rails.application.routes.draw do
     get '/logout', to: 'devise/sessions#destroy', as: :destroy_user_session
   end
 
+  get 'teams/:team_id', to: 'teams#show', as: :team
   get 'teams/:team_id/permits', to: 'team_permit_submissions#index', as: :team_permit_submissions
   get 'teams/:team_id/permits/:permit_id', to: 'team_permit_submissions#show', as: :team_permit_submission
-  get '/permits', to: 'team_permit_submissions#index', as: :permit_submissions
-  post '/permits', to: 'team_permit_submissions#create'
-  get '/permits/new', to: 'team_permit_submissions#new'
   delete '/permits/:id', to: 'team_permit_submissions#destroy'
+
+  get '/permits', to: 'permit_submissions#index', as: :permit_submissions
+  post '/permits', to: 'permit_submissions#create'
+  get '/permits/new', to: 'permit_submissions#new'
   get '/permits/:id', to: 'permit_submissions#show', as: :permit_submission
 end
