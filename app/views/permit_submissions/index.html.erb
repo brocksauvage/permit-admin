@@ -1,22 +1,24 @@
 <h1>Permits</h1>
 
-<div class="blue-button h-10">Search</div>
-<div class="blue-button h-10">
+<button class="blue-button h-10">Search</button>
+<button class="blue-button h-10">
 	<a  href="/permits/new">New Permit</a>
-</div>
+</button>
 
 <div class="Table">
 	<div class="Table-header">
-		<div class="inline-block p-5">Name</div><%= link_to "Sort", permits_path(sort_by: 'name') %>
-		<div class="inline-block p-5">Agency</div><%= link_to "Sort", permits_path(sort_by: 'agency') %>
-		<div class="inline-block p-5">Deadline</div><%= link_to "Sort", permits_path(sort_by: 'deadline') %>
+		<div class="Table-cell">Name<%= link_to "Sort", permits_path(sort_by: 'name') %></div>
+		<div class="Table-cell">Agency<%= link_to "Sort", permits_path(sort_by: 'agency') %></div>
+		<div class="Table-cell">Permit<%= link_to "Sort", permits_path(sort_by: 'agency') %></div>
+		<div class="Table-cell">Deadline<%= link_to "Sort", permits_path(sort_by: 'deadline') %></div>
+		<div class="Table-cell"></div>
 	</div>
 	<div class="Table-body">
 		<% @permits.map do |permit| %>
 		  <div class="py-1">
 		  	<div class="Table-row">
 		    	<%= render 'shared/permit_row', permit: permit %>
-		    	<%= link_to 'Show documents', permit_submission_path(id: permit.id) %>
+		    	<div class="Table-cell"><%= link_to 'Show documents', permit_submission_path(id: permit.id) %></div>
 		  	</div>
 		  </div>
 		<% end %>
