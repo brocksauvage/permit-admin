@@ -18,7 +18,7 @@
           <div class="Avatar"><div class="Avatar-image"></div></div>
           <ul class="Dropdown-list">
             <li class="Dropdown-listItem"><a href="/logout">Logout</a></li>
-            <li class="Dropdown-listItem"><%= link_to 'Team', team_path(team_id: current_user.team_id) %>
+            <li class="Dropdown-listItem"><%= link_to 'Team', team_path(team_id: current_user.team.id) %>
           </ul>
         </li>
       </ul>
