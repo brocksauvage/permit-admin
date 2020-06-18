@@ -16,10 +16,12 @@
       <ul class="Navigation">
         <li class="Navigation-item Dropdown" aria-haspopup="true" aria-expanded="false">
           <div class="Avatar"><div class="Avatar-image"></div></div>
+          <% if current_user.present? %>
           <ul class="Dropdown-list">
             <li class="Dropdown-listItem"><a href="/logout">Logout</a></li>
             <li class="Dropdown-listItem"><%= link_to 'Team', team_path(team_id: current_user.team.id) %>
           </ul>
+        <% end %>
         </li>
       </ul>
     </nav>
