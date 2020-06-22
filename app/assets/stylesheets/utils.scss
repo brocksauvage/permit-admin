@@ -2,15 +2,28 @@
 	background-color: #09347A;
 }
 
-.blue-button {
+.blue-button,
+.knockout-button,
+input[type="submit"] {
 	background: #09347A;
 	display: inline-block;
-	padding: 0 20px;
+	padding: 0.5rem 1rem;
 	border-radius: 4px;
 	color: white;
 	border: none;
+	text-decoration: none;
+
 	a {
 		text-decoration: none;
 		color: white;
+	}
+}
+
+.knockout-button {
+	border: 2px solid #09347A;
+	background: none;
+	color: #09347A;
+	a {
+		color: #09347A;
 	}
 }
