@@ -29,8 +29,23 @@ h1 {
 
 .grid {
   display: grid;
-  grid-template-columns: 1fr 5fr;
   grid-row-gap: 1em;
+  min-height: 100vh;
+}
+
+.grid article {
+  grid-column: 3;
+}
+
+@media all and (max-width: 700px) {
+  aside,
+  article {
+    grid-column: 1 / 6;
+  }
+}
+
+.grid.authenticated {
+  grid-template-columns: 1fr 5fr;
 }
 
 .Main {
@@ -44,10 +59,5 @@ header, footer {
   grid-column: 1 / 6;
 }
 
-@media all and (max-width: 700px) {
-  aside,
-  article {
-    grid-column: 1 / 6;
-  }
-}
+
 

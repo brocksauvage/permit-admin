@@ -9,49 +9,50 @@
   </head>
 
   <body>
-<div class="grid">
-  <header class="flex justify-between x-bg-blue h-16">
-    <%= image_tag('logo.png', class: 'h-full') %>
-    <nav role="navigation">
-      <ul class="Navigation">
-        <li class="Navigation-item Dropdown" aria-haspopup="true" aria-expanded="false">
-          <div class="Avatar"><div class="Avatar-image"></div></div>
-          <% if current_user.present? %>
-          <ul class="Dropdown-list">
-            <li class="Dropdown-listItem"><a href="/logout">Logout</a></li>
-            <li class="Dropdown-listItem"><%= link_to 'Team', team_path(team_id: current_user.team.id) %>
-          </ul>
+    <div class="grid">
+      <header class="flex justify-between x-bg-blue h-16">
+        <%= image_tag('logo.png', class: 'h-full') %>
+        <% if current_user.present? %>
+          <nav role="navigation">
+            <ul class="Navigation">
+              <li class="Navigation-item Dropdown" aria-haspopup="true" aria-expanded="false">
+                <div class="Avatar"><div class="Avatar-image"></div></div>
+                <ul class="Dropdown-list">
+                  <li class="Dropdown-listItem"><a href="/logout">Logout</a></li>
+                  <li class="Dropdown-listItem"><%= link_to 'Team', team_path(team_id: current_user.team.id) %>
+                </ul>
+              </li>
+            </ul>
+          </nav>
         <% end %>
-        </li>
-      </ul>
-    </nav>
+      </header>
+      
+      <% if current_user.present? %>
+        <aside class="Sidebar">
+          <div class="Dropdown x-bg-blue h-8">
+            <h3>Dashboard</h3>
+            <ul class="Dropdown-list">
+              <li class="Dropdown-listItem"><%= link_to "Permits", permits_path(sort_by: 'name') %></li>
+              <li class="Dropdown-listItem"><%= link_to "Something Else", permits_path(sort_by: 'name') %></li>
+            </ul>
+          </div>
+        </aside>
+      <% end %>
 
-  </header>
+      <article class="pr-2">
+        <% if flash.present? %>
+          <p class="notice"><%= notice %></p>
+          <p class="alert"><%= alert %></p>
+        <% end %>
 
-  <aside class="Sidebar">
-    <div class="Dropdown x-bg-blue h-8">
-      <h3>Dashboard</h3>
-      <ul class="Dropdown-list">
-        <li class="Dropdown-listItem"><%= link_to "Permits", permits_path(sort_by: 'name') %></li>
-        <li class="Dropdown-listItem"><%= link_to "Something Else", permits_path(sort_by: 'name') %></li>
-      </ul>
+        <div class="Main">
+          <%= yield %>
+        </div>
+      </article>
+
+      <footer class="bg-white">
+        Footer
+      </footer>
     </div>
-  </aside>
-
-  <article class="pr-2">
-    <% if flash.present? %>
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
-    <% end %>
-
-    <div class="Main">
-      <%= yield %>
-    </div>
-  </article>
-
-  <footer class="bg-white">
-    Footer
-  </footer>
-</div>
   </body>
 </html>
