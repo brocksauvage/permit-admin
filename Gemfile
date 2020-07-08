@@ -27,6 +27,9 @@ gem 'devise'
 # Use Postgres in production
 gem 'pg'
 
+# Use Postgres Full Text Search
+gem 'pg_search', '~> 2.3', '>= 2.3.2'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 

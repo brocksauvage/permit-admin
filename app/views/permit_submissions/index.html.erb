@@ -1,6 +1,10 @@
 <h1>Permits</h1>
 
-<button class="blue-button h-10">Search</button>
+<%= form_with(url: permits_path, method: 'get') do %>
+  <%= text_field(nil, :search, value: @search) %>
+  <button class="blue-button h-10">Search</button>
+<% end %>
+
 <button class="blue-button h-10">
 	<a  href="/permits/new">New Permit</a>
 </button>
