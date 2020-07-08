@@ -18,6 +18,9 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
+# Had to downgrade to 3.7.x. Check more at: https://github.com/rails/sprockets/issues/633
+gem 'sprockets', '3.7.2'
+
 # Use Active Model has_secure_password
 gem 'devise'
 
