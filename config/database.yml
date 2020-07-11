@@ -8,19 +8,20 @@ default: &default
   adapter: postgresql
   pool: 5
   timeout: 5000
+  host: db
+  user: postgres
+  password: permitadmindev
 
 development:
   <<: *default
-  host: localhost
-  port: 5432
-  database: permit-admin
+  database: permit_admin_development
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: permit-admin-test
+  database: permit_admin_test
 
 production:
   <<: *default

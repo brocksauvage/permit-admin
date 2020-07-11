@@ -5,11 +5,13 @@ class PermitSubmissionsController < ApplicationController
 
   def index
     sort_by = permit_index_params.fetch(:sort_by, nil)
+    @search = permit_index_params.fetch(:search, nil)
     @permits = if sort_by
                  current_user.permit_submissions.order(sort_by)
                else
                  current_user.permit_submissions
                end
+    @permits = @permits.search_permits(@search) if @search.present?
   end
 
   def show
@@ -35,7 +37,7 @@ class PermitSubmissionsController < ApplicationController
   private
 
   def permit_index_params
-    params.permit(:sort_by)
+    params.permit(:sort_by, :search)
   end
 
   def permit_params

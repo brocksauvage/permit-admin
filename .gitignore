@@ -48,3 +48,6 @@ yarn-debug.log*
 
 # Ignore empty file
 .DS_Store
+
+# Ignore pg data folder (docker volume intended for local dev env)
+/db_data
