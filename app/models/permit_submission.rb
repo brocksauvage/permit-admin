@@ -18,7 +18,7 @@ class PermitSubmission < ApplicationRecord
   pg_search_scope :search_permits,
                   against: %i[name agency],
                   associated_against: {
-                    permit_type: :name,
+                    permit_type: :name
                   },
                   using: { tsearch: { dictionary: 'english' } }
 end
