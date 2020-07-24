@@ -26,3 +26,16 @@
 		<% end %>
 	</div>
 </div>
+<div class="row">
+	<div class="Table mt-4 grid_table">
+		<div class="Table-header top-tasks">
+			<div class="Table-cell"><%= link_to "Top Tasks" %></div>
+		</div>
+		<div class="Table-body">
+
+		</div>
+	</div>
+	<div class="grid_table mt-4">
+		<%= render 'alerts/latest_alert', alert: @alert %>
+	</div>
+</div>
