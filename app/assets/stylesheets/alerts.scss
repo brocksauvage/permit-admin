@@ -1,0 +1,39 @@
+// Place all the styles related to the alerts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+.alert-div {
+  width: 172px;
+  padding: 8px;
+  border: 2px solid gray;
+  margin: 0;
+  border-radius: 5px;
+  border-top: 5px solid #020071;
+  box-shadow: 0px 5px 7px grey;
+  height: auto;
+  margin-left: 57px;
+}
+.more-info-div{
+  padding: 2px;
+  padding-top: 24px;
+}
+.alert-time{
+  position: absolute;
+  bottom: -4px;
+  right: 1px;
+  font-size: 13px;
+  color: #206db9;
+}
+.more-info {
+  background-color: #020071;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  padding: 3px;
+  font-size: 13px;
+}
+.text-color {
+  color: #206db9;
+}
+.alert-row {
+  position: relative;
+}

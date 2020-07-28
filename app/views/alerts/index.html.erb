@@ -1,0 +1,18 @@
+<h1>Alerts</h1>
+
+<div class="Table mt-4">
+  <div class="Table-header">
+    <div class="Table-cell">Body</div>
+    <div class="Table-cell">Link</div>
+    <div class="Table-cell">Created At</div>
+  </div>
+  <div class="Table-body">
+    <% @alerts.map do |alert| %>
+      <div class="Table-row">
+        <div class="Table-cell"><%= alert.body %></div>
+        <div class="Table-cell"><%= alert.link %></div>
+        <div class="Table-cell"><%= alert.created_at.strftime("%-H:%-M%P %-m/%-d/%-y") %></div>
+      </div>
+    <% end %>
+  </div>
+</div>

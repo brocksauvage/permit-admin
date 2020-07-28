@@ -26,7 +26,7 @@
           </nav>
         <% end %>
       </header>
-      
+
       <% if current_user.present? %>
         <aside class="Sidebar">
           <div class="Dropdown x-bg-blue h-8">
@@ -34,6 +34,7 @@
             <ul class="Dropdown-list">
               <li class="Dropdown-listItem"><%= link_to "Permits", permits_path(sort_by: 'name') %></li>
               <li class="Dropdown-listItem"><%= link_to "Something Else", permits_path(sort_by: 'name') %></li>
+              <li class="Dropdown-listItem"><%= link_to "Alerts", alerts_path %></li>
             </ul>
           </div>
         </aside>

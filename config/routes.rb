@@ -19,4 +19,5 @@ Rails.application.routes.draw do
   post '/permits', to: 'permit_submissions#create'
   get '/permits/new', to: 'permit_submissions#new'
   get '/permits/:id', to: 'permit_submissions#show', as: :permit_submission
+  resources :alerts, only: [:index]
 end

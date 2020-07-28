@@ -12,6 +12,7 @@ class PermitSubmissionsController < ApplicationController
                  current_user.permit_submissions
                end
     @permits = @permits.search_permits(@search) if @search.present?
+    @alert = Alert.order("created_at DESC").first
   end
 
   def show

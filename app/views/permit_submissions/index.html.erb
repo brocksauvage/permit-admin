@@ -6,23 +6,38 @@
 <% end %>
 
 <button class="blue-button h-10">
-	<a  href="/permits/new">New Permit</a>
+  <a  href="/permits/new">New Permit</a>
 </button>
 
 <div class="Table mt-4">
-	<div class="Table-header">
-		<div class="Table-cell"><%= link_to "Name", permits_path(sort_by: 'name') %></div>
-		<div class="Table-cell"><%= link_to "Agency", permits_path(sort_by: 'agency') %></div>
-		<div class="Table-cell"><%= link_to "Permit", permits_path(sort_by: 'agency') %></div>
-		<div class="Table-cell"><%= link_to "Deadline", permits_path(sort_by: 'deadline') %></div>
-		<div class="Table-cell"></div>
-	</div>
-	<div class="Table-body">
-		<% @permits.map do |permit| %>
+  <div class="Table-header">
+    <div class="Table-cell"><%= link_to "Name", permits_path(sort_by: 'name') %></div>
+    <div class="Table-cell"><%= link_to "Agency", permits_path(sort_by: 'agency') %></div>
+    <div class="Table-cell"><%= link_to "Permit", permits_path(sort_by: 'agency') %></div>
+    <div class="Table-cell"><%= link_to "Deadline", permits_path(sort_by: 'deadline') %></div>
+    <div class="Table-cell"></div>
+  </div>
+  <div class="Table-body">
+    <% @permits.map do |permit| %>
       <div class="Table-row">
-		    	<%= render 'shared/permit_row', permit: permit %>
-		    	<div class="Table-cell"><%= link_to 'Show documents', permit_submission_path(id: permit.id) %></div>
-		  </div>
-		<% end %>
-	</div>
+          <%= render 'shared/permit_row', permit: permit %>
+          <div class="Table-cell"><%= link_to 'Show documents', permit_submission_path(id: permit.id) %></div>
+      </div>
+    <% end %>
+  </div>
+</div>
+<div class="row flex_box">
+  <div class="Table mt-4 grid_table">
+    <div class="Table-header top-tasks">
+      <div class="Table-cell"><%= link_to "Top Tasks" %></div>
+    </div>
+    <div class="Table-body">
+
+    </div>
+  </div>
+  <% if @alert.present? %>
+    <div class="grid_table mt-4">
+      <%= render 'alerts/latest_alert', alert: @alert %>
+    </div>
+  <%end%>
 </div>
