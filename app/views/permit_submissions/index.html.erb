@@ -1,8 +1,8 @@
 <h1>Permits</h1>
 
 <%= form_with(url: permits_path, method: 'get') do %>
-  <%= text_field(nil, :search, value: @search) %>
-  <button class="blue-button h-10">Search</button>
+	<%= text_field(nil, :search, value: @search) %>
+	<button class="blue-button h-10">Search</button>
 <% end %>
 
 <button class="blue-button h-10">
@@ -19,10 +19,10 @@
 	</div>
 	<div class="Table-body">
 		<% @permits.map do |permit| %>
-      <div class="Table-row">
-		    	<%= render 'shared/permit_row', permit: permit %>
-		    	<div class="Table-cell"><%= link_to 'Show documents', permit_submission_path(id: permit.id) %></div>
-		  </div>
+			<div class="Table-row">
+					<%= render 'shared/permit_row', permit: permit %>
+					<div class="Table-cell"><%= link_to 'Show documents', permit_submission_path(id: permit.id) %></div>
+			</div>
 		<% end %>
 	</div>
 </div>
