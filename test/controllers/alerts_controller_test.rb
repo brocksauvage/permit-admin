@@ -5,5 +5,4 @@ class AlertsControllerTest < ActionDispatch::IntegrationTest
     get alerts_index_url
     assert_response :success
   end
-
 end
