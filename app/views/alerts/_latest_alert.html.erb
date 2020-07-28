@@ -3,7 +3,7 @@
   <div class="alert-row">
     <div class="Table-cell text-color"><%= alert.body %></div>
     <div class="Table-cell"><%= alert.link %></div>
-    <div class="alert-time"><%= alert.created_at.strftime("%H:%M%P") %><br><%= alert.created_at.strftime("%m/%d/%y") %></div>
+    <div class="alert-time"><%= alert.created_at.strftime("%-H:%-M%P") %><br><%= alert.created_at.strftime("%-m/%-d/%-y") %></div>
     <div class="Table-cell more-info-div"><%= link_to "More info...", alerts_path , :class => "more-info" %></div>
   </div>
 </div>
