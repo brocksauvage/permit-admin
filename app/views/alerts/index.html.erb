@@ -11,7 +11,7 @@
       <div class="Table-row">
         <div class="Table-cell"><%= alert.body %></div>
         <div class="Table-cell"><%= alert.link %></div>
-        <div class="Table-cell"><%= alert.created_at.strftime("%a %b %e %Y %T") %></div>
+        <div class="Table-cell"><%= alert.created_at.strftime("%-H:%-M%P %-m/%-d/%-y") %></div>
       </div>
     <% end %>
   </div>
