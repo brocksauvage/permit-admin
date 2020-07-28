@@ -35,7 +35,9 @@
 
 		</div>
 	</div>
-	<div class="grid_table mt-4">
-		<%= render 'alerts/latest_alert', alert: @alert %>
-	</div>
+	<% if @alert.present? %>
+		<div class="grid_table mt-4">
+			<%= render 'alerts/latest_alert', alert: @alert %>
+		</div>
+	<%end%>
 </div>
