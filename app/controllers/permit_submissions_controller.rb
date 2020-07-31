@@ -35,6 +35,10 @@ class PermitSubmissionsController < ApplicationController
     @permit = current_user.permit_submissions.build
   end
 
+  def edit
+    @permit = current_user.permit_submissions.find(params.fetch(:id))
+  end
+
   private
 
   def permit_index_params
