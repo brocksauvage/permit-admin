@@ -19,5 +19,9 @@ Rails.application.routes.draw do
   post '/permits', to: 'permit_submissions#create'
   get '/permits/new', to: 'permit_submissions#new'
   get '/permits/:id', to: 'permit_submissions#show', as: :permit_submission
+  get '/permits/:id/edit', to: 'permit_submissions#edit'
+  patch '/permits/:id', to: 'permit_submissions#update'
+  delete '/permits/:id', to: 'permit_submissions#destroy'
+
   resources :alerts, only: [:index]
 end
