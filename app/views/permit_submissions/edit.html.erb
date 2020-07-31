@@ -1,0 +1,18 @@
+<h1>Edit Permit</h1>
+
+<%= form_with model: @permit do |f| %>
+  <%= f.label "Name" %>
+  <%= f.text_field :name %>
+  <%= f.label "Agency" %>
+  <%= f.text_field :agency %>
+  <%= f.label "Status" %>
+  <%= f.select :status, [["accepted", "accepted"], ["denied", "denied"], ["filed", "filed"]] %>
+  <%= f.label "Deadline" %>
+  <%= f.date_field :deadline %>
+  <%= f.fields_for :permit_documents do |document_form| %>
+      <%= document_form.label :document %>
+      <%= document_form.file_field :document %>
+  <% end %>
+
+  <%= f.submit 'Update' %>
+<% end %>

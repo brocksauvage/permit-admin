@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   post '/permits', to: 'permit_submissions#create'
   get '/permits/new', to: 'permit_submissions#new'
   get '/permits/:id', to: 'permit_submissions#show', as: :permit_submission
-  get '/permits/:id/edit', to: 'permit_submissions#edit'
+  get '/permits/:id/edit', to: 'permit_submissions#edit', as: :permit_edit
   patch '/permits/:id', to: 'permit_submissions#update'
   delete '/permits/:id', to: 'permit_submissions#destroy'
 
