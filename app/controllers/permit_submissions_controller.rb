@@ -41,8 +41,12 @@ class PermitSubmissionsController < ApplicationController
 
   def update
     @permit = current_user.permit_submissions.find(params.fetch(:id))
-    @permit.update!(permit_params)
-    redirect_to permit_submissions_path
+    if @permit.update!(permit_params)
+      if permit_document_params
+        @permit.find_or_create_by(permit_document_params)
+      end
+      redirect_to permit_submissions_path
+    end
   end
 
   private
@@ -52,7 +56,7 @@ class PermitSubmissionsController < ApplicationController
   end
 
   def permit_params
-    params.require(:permit_submission).permit(:name, :agency, :deadline, :status, :permit_type_id).merge(user_id: current_user.id)
+    params.require(:permit_submission).permit(:name, :agency, :deadline, :status, :permit_type_id, permit_documents: []).merge(user_id: current_user.id)
   end
 
   def permit_document_params
