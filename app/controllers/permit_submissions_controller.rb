@@ -42,7 +42,7 @@ class PermitSubmissionsController < ApplicationController
   def update
     @permit = current_user.permit_submissions.find(params.fetch(:id))
     if @permit.update!(permit_params)
-      redirect_to permit_submissions_path
+      redirect_to permit_submission_path(@permit)
     end
   end
 

@@ -36,11 +36,17 @@
         <br>
         Documents:
         <%= f.fields_for :permit_documents do |document_form| %>
-          <div class="max-w-xs rounded overflow-hidden shadow-lg bg-gray-300 mt-2 pl-2">
-            <p class = "font-sans"> Name:<%= document_form.object.document.blob.filename %> </p>
-            <p class = "font-sans"> Format: <%= document_form.object.document.blob.content_type %> </p>
-            <%= document_form.file_field :document %>
-            <p class = "font-sans"> Delete: <%= document_form.check_box :_destroy %> </p>
+          <div class="max-w-xs rounded overflow-hidden shadow-lg bg-gray-300 mt-2 p-2">
+            <% if document_form.object.document.attached? %>
+              <p class = "font-sans"> Name:<%= document_form.object.document.blob.filename %> </p>
+              <p class = "font-sans"> Format: <%= document_form.object.document.blob.content_type %> </p>
+              <p class = "font-sans"> Delete: <%= document_form.check_box :_destroy %> </p>
+              <% if document_form.object.document.previewable? %>
+                <%= image_tag(document_form.object.document.preview(resize: "200x200>")) %>
+              <% end %>
+            <% else %>
+              <%= document_form.file_field :document %>
+            <% end %>
           </div>
         <% end %>
         <br>

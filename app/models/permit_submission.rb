@@ -1,7 +1,7 @@
 class PermitSubmission < ApplicationRecord
   include PgSearch::Model
 
-  enum status: %i[accepted filed denied]
+  # enum status: %i[accepted filed denied]
   belongs_to :user
   belongs_to :permit_type
 
