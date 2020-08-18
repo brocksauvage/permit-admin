@@ -1,0 +1,28 @@
+<h1>Permit</h1>
+<div class="flex">
+  <div class = "w-1/4">
+    <b>Name</b><br>
+    <%= @permit.name %>
+  </div>
+  <div class = "w-1/4">
+    <b>Agency</b><br>
+    <%= @permit.agency %>
+  </div>
+  <div class = "w-1/4">
+    <b>Deadline</b><br>
+    <%= @permit.deadline %>
+  </div>
+  <div class = "w-1/4">
+    <b>Status</b><br>
+    <%= @permit.status %>
+  </div>
+</div>
+<div class = "flex">
+  <div class = "w-full">
+    <b>Documents:</b><br>
+    <% @permit.permit_documents.map(&:document).map do |document| %>
+      <%= unless document.attachment.nil? then image_tag url_for(document) end %>
+    <% end %>
+  </div>
+</div>
+<%= link_to 'Back to all permits', permits_path, class: "block p-2" %>

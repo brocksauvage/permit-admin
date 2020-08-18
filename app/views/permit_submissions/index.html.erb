@@ -22,6 +22,7 @@
       <div class="Table-row">
           <%= render 'shared/permit_row', permit: permit %>
           <div class="Table-cell"><%= link_to 'Show documents', permit_submission_path(id: permit.id) %></div>
+          <div class="Table-cell"><%= link_to "Edit permit", permit_edit_url(id: permit.id) %></div>
       </div>
     <% end %>
   </div>

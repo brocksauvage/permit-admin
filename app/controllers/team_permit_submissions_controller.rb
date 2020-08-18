@@ -20,9 +20,10 @@ class TeamPermitSubmissionsController < ApplicationController
   end
 
   def destroy
-    team_id = permit_params[:team_id].to_i
-    current_team.permit_submissions.find(team_id).destroy!
-    redirect_to team_permit_submissions_path(team_id)
+    @permit = current_team.permit_submissions.find(permit_params[:permit_id])
+    if @permit.destroy!
+      redirect_to team_permit_submissions_path(team_id)
+    end
   end
 
   private
