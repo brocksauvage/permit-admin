@@ -17,21 +17,21 @@ user.permit_submissions.create!([
   {
     name: 'Trade Waste Removal License',
     agency: 'NY Department of Motor Vehicles',
-    status: 0,
+    status: 'closed',
     deadline: Date.today,
     permit_type_id: waste_permit_type.id
 },
   {
     name: 'Air pollution permit',
     agency: 'New York Battery Park City Authority',
-    status: 1,
+    status: 'in-effect',
     deadline: Date.today,
     permit_type_id: waste_permit_type.id
 },
     {
     name: 'Special truck pollution license',
     agency: 'NY Department of Motor Vehicles',
-    status: 2,
+    status: 'application',
     deadline: Date.today,
     permit_type_id: waste_permit_type.id
 }
