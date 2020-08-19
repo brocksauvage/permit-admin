@@ -1,57 +1,80 @@
-<div class="table">
-  <div class="flex-row">
-    <div class="flex-col">
-      <h1>Edit Permit</h1>
-      <div class="inline-block">
-        <%= link_to 'Delete', '#modal', class: "delete-button mt-2 mb-2" %>
+<h1>Edit Permit</h1>
+<div id="modal" class="overlay">
+	<div class="popup">
+		<h2>Delete Permit</h2>
+		<a class="close" href="#">&times;</a>
+		<div class="content">
+      <div class="flex mb-1"
+			   <p>Are you sure you'd like to delete this permit?</p>
+      </div>
+      <div class="flex mb-1"
+        <%= button_to 'Yes', {controller: :permit_submissions, :action => 'destroy', :permit_id => @permit.id }, {method: :delete, class: "delete-button"} %>
+        <%= link_to 'No', '#', class: "blue-button text-xs font-sans ml-1" %>
+      </div>
+		</div>
+	</div>
+</div>
+<%= form_with model: @permit do |f| %>
+  <div class="flex mb-2 -mx-2">
+    <%= f.label "Name", class: "w-1/4 px-2 " %>
+    <%= f.label "Type", class: "w-1/4 px-2" %>
+    <%= f.label "Agency", class: "w-1/4 px-2" %>
+    <%= f.label "Status", class: "w-1/4 px-2" %>
+  </div>
+  <div class="flex mb-4 -mx-2">
+    <div class = "w-1/4 px-2">
+      <%= f.text_field :name %>
+    </div>
+    <div class = "w-1/4 px-2">
+      <%= f.select :permit_type_id, PermitType.all.collect{|t| [t.name, t.id]} %>
+    </div>
+    <div class = "w-1/4 px-2">
+      <%= f.text_field :agency %>
+    </div>
+    <div class = "w-1/4 px-2">
+      <%= f.select :status, options_for_select(PermitSubmission.statuses.map{|k,v| [k.humanize, k]}), id: :status %>
+    </div>
+  </div>
+  <div class="flex mb-2 -mx-2">
+    <%= f.label "Deadline", class: "w-1/4 px-2" %>
+    <%= f.label "Permittee", class: "w-1/4 px-2" %>
+    <%= f.label "Equipment", class: "w-1/4 px-2" %>
+    <%= f.label "Location", class: "w-1/4 px-2" %>
+  </div>
+  <div class="flex mb-4 -mx-2">
+    <div class = "w-1/4 px-2">
+      <%= f.date_field :deadline %>
+    </div>
+    <div class = "w-1/4 px-2">
+      <%= f.text_field :permittee %>
+    </div>
+    <div class = "w-1/4 px-2">
+      <%= f.text_field :equipment %>
+    </div>
+    <div class = "w-1/4 px-2">
+      <%= f.text_field :location %>
+    </div>
+  </div>
+  <div class = "flex mb-4">
+    <%= f.fields_for :permit_documents do |document_form| %>
+      <div class="max-w-xs rounded overflow-hidden shadow-lg bg-gray-300 mt-2 p-2">
+        <% if document_form.object.document.attached? %>
+          <p class = "font-sans"> Name:<%= document_form.object.document.blob.filename %> </p>
+          <p class = "font-sans"> Format: <%= document_form.object.document.blob.content_type %> </p>
+          <p class = "font-sans"> Delete: <%= document_form.check_box :_destroy %> </p>
+          <% if document_form.object.document.previewable? %>
+            <%= image_tag(document_form.object.document.preview(resize: "200x200>")) %>
+          <% end %>
+        <% else %>
+          <%= document_form.file_field :document %>
+        <% end %>
       </div>
     </div>
-  </div>
-  <div id="modal" class="overlay">
-  	<div class="popup">
-  		<h2>Delete Permit</h2>
-  		<a class="close" href="#">&times;</a>
-  		<div class="content">
-        <div class="flex mb-1"
-  			   <p>Are you sure you'd like to delete this permit?</p>
-        </div>
-        <div class="flex mb-1"
-          <%= button_to 'Yes', {controller: :permit_submissions, :action => 'destroy', :permit_id => @permit.id }, {method: :delete, class: "delete-button"} %>
-          <%= link_to 'No', '#', class: "blue-button text-xs font-sans ml-1" %>
-        </div>
-  		</div>
-  	</div>
-  </div>
-  <div class="flex-row">
-    <div class="grid grid-cols-4">
-      <%= form_with model: @permit do |f| %>
-        <%= f.label "Name" %>
-        <%= f.text_field :name %>
-        <%= f.label "Agency" %>
-        <%= f.text_field :agency %>
-        <%= f.label "Status" %>
-        <%= f.select :status, [["accepted", "accepted"], ["denied", "denied"], ["filed", "filed"]] %>
-        <%= f.label "Deadline" %>
-        <%= f.date_field :deadline %>
-        <br>
-        Documents:
-        <%= f.fields_for :permit_documents do |document_form| %>
-          <div class="max-w-xs rounded overflow-hidden shadow-lg bg-gray-300 mt-2 p-2">
-            <% if document_form.object.document.attached? %>
-              <p class = "font-sans"> Name:<%= document_form.object.document.blob.filename %> </p>
-              <p class = "font-sans"> Format: <%= document_form.object.document.blob.content_type %> </p>
-              <p class = "font-sans"> Delete: <%= document_form.check_box :_destroy %> </p>
-              <% if document_form.object.document.previewable? %>
-                <%= image_tag(document_form.object.document.preview(resize: "200x200>")) %>
-              <% end %>
-            <% else %>
-              <%= document_form.file_field :document %>
-            <% end %>
-          </div>
-        <% end %>
-        <br>
-        <%= f.submit 'Update', class: "mt-2" %>
-      <% end %>
+    <% end %>
+  <div class = "flex">
+    <div class="w-full pr-2">
+      <%= f.submit 'Update'%>
+			<%= link_to 'Delete', '#modal', class: "delete-button ml-2" %>
     </div>
   </div>
-</div>
+<% end %>

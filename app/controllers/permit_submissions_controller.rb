@@ -59,7 +59,7 @@ class PermitSubmissionsController < ApplicationController
   end
 
   def permit_params
-    params.require(:permit_submission).permit(:name, :agency, :deadline, :status, :permit_type_id, permit_documents_attributes: [:document, :_destroy, :id]).merge(user_id: current_user.id)
+    params.require(:permit_submission).permit(:name, :agency, :deadline, :status, :permittee, :location, :equipment, :permit_type_id, permit_documents_attributes: [:document, :_destroy, :id]).merge(user_id: current_user.id)
   end
 
   def permit_document_params
