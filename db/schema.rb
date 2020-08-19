@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_19_013323) do
+ActiveRecord::Schema.define(version: 2020_08_19_210758) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -67,7 +67,7 @@ ActiveRecord::Schema.define(version: 2020_08_19_013323) do
     t.string "name"
     t.string "agency"
     t.date "deadline"
-    t.integer "status"
+    t.string "status"
     t.uuid "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

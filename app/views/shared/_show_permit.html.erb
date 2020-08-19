@@ -13,7 +13,7 @@
     <%= @permit.agency %>
   </div>
   <div class = "w-1/4 px-2">
-    <%= @permit.status %>
+    <%= PermitSubmission.statuses[@permit.status].humanize %>
   </div>
   <div class = "w-1/4 px-2">
     <%= @permit.deadline %>
