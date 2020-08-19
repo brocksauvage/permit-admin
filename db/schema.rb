@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_23_175533) do
+ActiveRecord::Schema.define(version: 2020_08_18_170358) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -45,8 +45,13 @@ ActiveRecord::Schema.define(version: 2020_07_23_175533) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "first_name"
+    t.string "last_name"
+    t.string "role"
+    t.bigint "team_id"
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+    t.index ["team_id"], name: "index_admins_on_team_id"
   end
 
   create_table "alerts", force: :cascade do |t|
