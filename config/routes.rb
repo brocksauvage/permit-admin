@@ -4,10 +4,18 @@ Rails.application.routes.draw do
   get '/', to: 'welcome#index'
 
   devise_for :users, skip: [:sessions]
+  devise_for :admins, skip: [:sessions]
+
   as :user do
     get '/login', to: 'devise/sessions#new', as: :new_user_session
     post '/login', to: 'devise/sessions#create', as: :user_session
     get '/logout', to: 'devise/sessions#destroy', as: :destroy_user_session
+  end
+
+  as :admin do
+    get '/admin/login', to: 'devise/admin/sessions#new', as: :new_admin_session
+    post '/admin/login', to: 'devise/admin/sessions#create', as: :admin_session
+    get '/admin/logout', to: 'devise/admin/sessions#destroy', as: :destroy_admin_session
   end
 
   get 'teams/:team_id', to: 'teams#show', as: :team
