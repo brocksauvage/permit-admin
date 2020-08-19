@@ -1,4 +1,4 @@
 <div class="Table-cell"><%= permit.name %></div>
 <div class="Table-cell"><%= permit.agency %></div>
 <div class="Table-cell"><%= permit.permit_type.name %></div>
-<div class="Table-cell"><%= permit.deadline.to_date %></div>
+<div class="Table-cell"><%= permit.deadline.to_date if permit.deadline %></div>
