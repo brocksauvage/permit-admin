@@ -7,9 +7,9 @@ class PermitSubmissionsController < ApplicationController
     sort_by = permit_index_params.fetch(:sort_by, nil)
     @search = permit_index_params.fetch(:search, nil)
     @permits = if sort_by
-                 current_user.permit_submissions.order(sort_by)
+                 current_user.team.permit_submissions.order(sort_by)
                else
-                 current_user.permit_submissions
+                 current_user.team.permit_submissions
                end
     @permits = @permits.search_permits(@search) if @search.present?
     @alert = Alert.order('created_at DESC').first
