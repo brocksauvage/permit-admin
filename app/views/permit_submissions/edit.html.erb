@@ -55,6 +55,19 @@
       <%= f.text_field :location %>
     </div>
   </div>
+	<% if current_user.manager? %>
+		<div class="flex mb-2 -mx-2">
+	    <%= f.label "Assigned User", class: "w-1/4 px-2" %>
+	  </div>
+		<div class="flex mb-4 -mx-2">
+	    <div class = "w-1/4 px-2">
+	      <%= f.select :user_id, User.all.collect{|u| ["#{u.first_name} #{u.last_name}", u.id]} %>
+	    </div>
+	  </div>
+	<% else %>
+		<%= f.hidden_field :user_id, value: current_user.id %>
+		<%= hidden_field_tag 'selected', 'none'  %>
+	<% end %>
   <div class = "flex mb-4">
     <%= f.fields_for :permit_documents do |document_form| %>
       <div class="max-w-xs rounded overflow-hidden shadow-lg bg-gray-300 mt-2 p-2">

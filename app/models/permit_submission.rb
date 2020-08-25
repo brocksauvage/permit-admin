@@ -18,6 +18,8 @@ class PermitSubmission < ApplicationRecord
   attribute :deadline, :datetime
   attribute :agency, :string
 
+  validates :user_id, :presence => true
+
   pg_search_scope :search_permits,
                   against: %i[name agency],
                   associated_against: {

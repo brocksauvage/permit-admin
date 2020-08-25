@@ -16,7 +16,7 @@ class PermitSubmissionsController < ApplicationController
   end
 
   def show
-    @permit = current_user.permit_submissions.find(params.fetch(:id))
+    @permit = PermitSubmission.find(params.fetch(:id))
   end
 
   def create
@@ -59,7 +59,7 @@ class PermitSubmissionsController < ApplicationController
   end
 
   def permit_params
-    params.require(:permit_submission).permit(:name, :agency, :deadline, :status, :permittee, :location, :equipment, :permit_type_id, permit_documents_attributes: [:document, :_destroy, :id]).merge(user_id: current_user.id)
+    params.require(:permit_submission).permit(:name, :user_id, :agency, :deadline, :status, :permittee, :location, :equipment, :permit_type_id, permit_documents_attributes: [:document, :_destroy, :id])
   end
 
   def permit_document_params
