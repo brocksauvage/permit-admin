@@ -55,7 +55,7 @@
 	  </div>
 		<div class="flex mb-4 -mx-2">
 	    <div class = "w-1/4 px-2">
-	      <%= f.select :user_id, User.all.collect{|u| ["#{u.first_name} #{u.last_name}", u.id]} %>
+	      <%= f.select :user_id, current_user.team.users.collect{|u| ["#{u.first_name} #{u.last_name}", u.id]} %>
 	    </div>
 	  </div>
 	<% else %>
