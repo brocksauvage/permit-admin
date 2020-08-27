@@ -3,6 +3,8 @@ class PermitSubmission < ApplicationRecord
 
   enum status: {closed: "closed", ineffect: "in-effect", application: "application"}
 
+  acts_as_taggable_on :tags
+
   belongs_to :user
   belongs_to :permit_type
 

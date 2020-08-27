@@ -59,7 +59,7 @@ class PermitSubmissionsController < ApplicationController
   end
 
   def permit_params
-    params.require(:permit_submission).permit(:name, :user_id, :agency, :deadline, :status, :permittee, :location, :equipment, :permit_type_id, permit_documents_attributes: [:document, :_destroy, :id])
+    params.require(:permit_submission).permit(:name, :user_id, :agency, :deadline, :status, :permittee, :location, :equipment, :permit_type_id, :tag_list, permit_documents_attributes: [:document, :_destroy, :id])
   end
 
   def permit_document_params
