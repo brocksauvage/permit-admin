@@ -15,13 +15,16 @@
     <div class="Table-cell"><%= link_to "Agency", permits_path(sort_by: 'agency') %></div>
     <div class="Table-cell"><%= link_to "Permit", permits_path(sort_by: 'agency') %></div>
     <div class="Table-cell"><%= link_to "Deadline", permits_path(sort_by: 'deadline') %></div>
+    <div class="Table-cell"><%= link_to "Status", permits_path(sort_by: 'deadline') %></div>
+    <div class="Table-cell"><%= link_to "Permittee", permits_path(sort_by: 'deadline') %></div>
+    <div class="Table-cell"><%= link_to "Equipment", permits_path(sort_by: 'deadline') %></div>
+    <div class="Table-cell"><%= link_to "Location", permits_path(sort_by: 'deadline') %></div>
     <div class="Table-cell"></div>
   </div>
   <div class="Table-body">
     <% @permits.map do |permit| %>
       <div class="Table-row">
           <%= render 'shared/permit_row', permit: permit %>
-          <div class="Table-cell"><%= link_to 'Show documents', permit_submission_path(id: permit.id) %></div>
           <div class="Table-cell"><%= link_to "Edit permit", permit_edit_url(id: permit.id) %></div>
       </div>
     <% end %>

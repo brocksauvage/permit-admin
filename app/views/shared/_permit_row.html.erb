@@ -1,4 +1,8 @@
-<div class="Table-cell"><%= permit.name %></div>
+<div class="Table-cell"><%= link_to permit.name, permit_submission_path(id: permit.id) %></div>
 <div class="Table-cell"><%= permit.agency %></div>
 <div class="Table-cell"><%= permit.permit_type.name %></div>
 <div class="Table-cell"><%= permit.deadline.to_date %></div>
+<div class="Table-cell"><%= permit.status %></div>
+<div class="Table-cell"><%= permit.permittee %></div>
+<div class="Table-cell"><%= permit.equipment %></div>
+<div class="Table-cell"><%= permit.location %></div>
