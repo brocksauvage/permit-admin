@@ -19,20 +19,29 @@ user.permit_submissions.create!([
     agency: 'NY Department of Motor Vehicles',
     status: 'closed',
     deadline: Date.today,
-    permit_type_id: waste_permit_type.id
+    permit_type_id: waste_permit_type.id,
+    permittee: 'Test Permittee',
+    equipment: 'Equipment',
+    location: 'United States'
 },
   {
     name: 'Air pollution permit',
     agency: 'New York Battery Park City Authority',
     status: 'in-effect',
     deadline: Date.today,
-    permit_type_id: waste_permit_type.id
+    permit_type_id: waste_permit_type.id,
+    permittee: 'Test Permittee',
+    equipment: 'Equipment',
+    location: 'United States'
 },
     {
     name: 'Special truck pollution license',
     agency: 'NY Department of Motor Vehicles',
     status: 'application',
     deadline: Date.today,
-    permit_type_id: waste_permit_type.id
+    permit_type_id: waste_permit_type.id,
+    permittee: 'Test Permittee',
+    equipment: 'Equipment',
+    location: 'United States'
 }
 ])
