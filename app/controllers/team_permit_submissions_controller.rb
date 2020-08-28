@@ -17,6 +17,7 @@ class TeamPermitSubmissionsController < ApplicationController
   def show
     @team = current_team
     @permit = current_team.permit_submissions.find(permit_params[:permit_id])
+    render template: "permit_submissions/show"
   end
 
   def edit

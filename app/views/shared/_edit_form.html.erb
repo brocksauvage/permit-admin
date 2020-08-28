@@ -16,7 +16,11 @@
   			   <p>Are you sure you'd like to delete this permit?</p>
         </div>
         <div class="flex mb-1"
-          <%= button_to 'Yes', {controller: :permit_submissions, :action => 'destroy', :permit_id => @permit.id }, {method: :delete, class: "delete-button"} %>
+          <% if current_user.manager? %>
+            <%= button_to 'Yes', {controller: :team_permit_submissions, :action => 'destroy', :id => @permit.id }, {method: :delete, class: "delete-button"} %>
+          <% else %>
+            <%= button_to 'Yes', {controller: :permit_submissions, :action => 'destroy', :permit_id => @permit.id }, {method: :delete, class: "delete-button"} %>
+          <% end %>
           <%= link_to 'No', '#', class: "blue-button text-xs font-sans ml-1" %>
         </div>
   		</div>
