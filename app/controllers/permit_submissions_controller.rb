@@ -40,7 +40,7 @@ class PermitSubmissionsController < ApplicationController
   end
 
   def update
-    @permit = current_user.permit_submissions.find(params.fetch(:id))
+    @permit = current_team.permit_submissions.find(params.fetch(:id))
     if @permit.update!(permit_params)
       redirect_to permit_submission_path(@permit)
     end

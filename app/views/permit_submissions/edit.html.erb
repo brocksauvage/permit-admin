@@ -1,5 +1,5 @@
 <% if user_signed_in? %>
-  <% if @permit.user.id == current_user.id %>
+  <% if @permit.user.id == current_user.id || current_user.manager? %>
     <%= render 'shared/edit_form', permit: @permit %>
   <% end %>
 <% else %>

@@ -19,6 +19,11 @@ class TeamPermitSubmissionsController < ApplicationController
     @permit = current_team.permit_submissions.find(permit_params[:permit_id])
   end
 
+  def edit
+    @permit = current_team.permit_submissions.find(permit_params[:permit_id])
+    render template: "permit_submissions/edit"
+  end
+
   def destroy
     @permit = current_team.permit_submissions.find(permit_params[:permit_id])
     if @permit.destroy!
