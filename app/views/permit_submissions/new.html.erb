@@ -1,20 +1,72 @@
 <h1>New Permit</h1>
 
 <%= form_with model: @permit, method: "post" do |f| %>
-  <%= f.label "Name" %>
-  <%= f.text_field :name %>
-  <%= f.label "Type" %>
-  <%= f.select :permit_type_id, PermitType.all.collect{|t| [t.name, t.id]} %>
-  <%= f.label "Agency" %>
-  <%= f.text_field :agency %>
-  <%= f.label "Status" %>
-  <%= f.select :status, [["accepted", "accepted"], ["denied", "denied"], ["filed", "filed"]] %>
-  <%= f.label "Deadline" %>
-  <%= f.date_field :deadline %>
-  <%= f.fields_for :permit_documents do |document_form| %>
-      <%= document_form.label :document %>
-      <%= document_form.file_field :document %>
-  <% end %>
-
+  <div class="flex mb-2 -mx-2">
+    <%= f.label "Name", class: "w-1/4 px-2 " %>
+    <%= f.label "Type", class: "w-1/4 px-2" %>
+    <%= f.label "Agency", class: "w-1/4 px-2" %>
+    <%= f.label "Status", class: "w-1/4 px-2" %>
+  </div>
+  <div class="flex mb-4 -mx-2">
+    <div class = "w-1/4 px-2">
+      <%= f.text_field :name %>
+    </div>
+    <div class = "w-1/4 px-2">
+      <%= f.select :permit_type_id, PermitType.all.collect{|t| [t.name, t.id]} %>
+    </div>
+    <div class = "w-1/4 px-2">
+      <%= f.text_field :agency %>
+    </div>
+    <div class = "w-1/4 px-2">
+      <%= f.select :status, options_for_select(PermitSubmission.statuses.map{|k,v| [v.humanize, k]}) %>
+    </div>
+  </div>
+  <div class="flex mb-2 -mx-2">
+    <%= f.label "Deadline", class: "w-1/4 px-2" %>
+    <%= f.label "Permittee", class: "w-1/4 px-2" %>
+    <%= f.label "Equipment", class: "w-1/4 px-2" %>
+    <%= f.label "Location", class: "w-1/4 px-2" %>
+  </div>
+  <div class="flex mb-4 -mx-2">
+    <div class = "w-1/4 px-2">
+      <%= f.date_field :deadline %>
+    </div>
+    <div class = "w-1/4 px-2">
+      <%= f.text_field :permittee %>
+    </div>
+    <div class = "w-1/4 px-2">
+      <%= f.text_field :equipment %>
+    </div>
+    <div class = "w-1/4 px-2">
+      <%= f.text_field :location %>
+    </div>
+  </div>
+  <div class="flex mb-2 -mx-2">
+    <%= f.label "Tags", class: "w-1/4 px-2" %>
+  </div>
+  <div class="flex mb-4 -mx-2">
+    <div class = "w-1/4 px-2">
+			<%= f.text_field :tag_list, value: f.object.tag_list.join(",") %>
+    </div>
+	</div>
+  <% if current_user.manager? %>
+		<div class="flex mb-2 -mx-2">
+	    <%= f.label "Assigned User", class: "w-1/4 px-2" %>
+	  </div>
+		<div class="flex mb-4 -mx-2">
+	    <div class = "w-1/4 px-2">
+	      <%= f.select :user_id, current_user.team.users.collect{|u| ["#{u.first_name} #{u.last_name}", u.id]} %>
+	    </div>
+	  </div>
+	<% else %>
+		<%= f.hidden_field :user_id, value: current_user.id %>
+		<%= hidden_field_tag 'selected', 'none'  %>
+	<% end %>
+  <div class="flex">
+    <%= f.fields_for :permit_documents do |document_form| %>
+        <%= document_form.label :document %>
+        <%= document_form.file_field :document %>
+    <% end %>
+  </div>
   <%= submit_tag("Create") %>
 <% end %>

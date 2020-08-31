@@ -1,7 +1,7 @@
 
 team = Team.create(name: "Main St. Cafe")
 
-PermitType.create([{ name: "Traffic Permit" }, { name: "Waste Permit" }])
+PermitType.create([{ name: "Traffic Permit" }, { name: "Waste Permit" }, { name: "NYDoH Food" }])
 admin_attributes = { first_name: 'Jane', last_name: 'Doe', team_id: team.id, role: 'manager', email: 'admin@example.com', password: 'abc123' }
 admin_user = User.find_by(admin_attributes.slice(:email))
 User.create!(admin_attributes) unless admin_user.present?
@@ -17,22 +17,31 @@ user.permit_submissions.create!([
   {
     name: 'Trade Waste Removal License',
     agency: 'NY Department of Motor Vehicles',
-    status: 'filed',
+    status: 'closed',
     deadline: Date.today,
-    permit_type_id: waste_permit_type.id
+    permit_type_id: waste_permit_type.id,
+    permittee: 'Test Permittee',
+    equipment: 'Equipment',
+    location: 'United States'
 },
   {
     name: 'Air pollution permit',
     agency: 'New York Battery Park City Authority',
-    status: 'denied',
+    status: 'in-effect',
     deadline: Date.today,
-    permit_type_id: waste_permit_type.id
+    permit_type_id: waste_permit_type.id,
+    permittee: 'Test Permittee',
+    equipment: 'Equipment',
+    location: 'United States'
 },
     {
     name: 'Special truck pollution license',
     agency: 'NY Department of Motor Vehicles',
-    status: 'accepted',
+    status: 'application',
     deadline: Date.today,
-    permit_type_id: waste_permit_type.id
+    permit_type_id: waste_permit_type.id,
+    permittee: 'Test Permittee',
+    equipment: 'Equipment',
+    location: 'United States'
 }
 ])
