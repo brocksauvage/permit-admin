@@ -1,8 +1,23 @@
 <h1><%= @team.name %></h1>
 
-<h2>Members</h2>
-<p>Admin: <%= @team.manager_name %></p>
-
-<% @team.users.each do |user| %>
-	<p><%= user.name %></p>
-<% end %>
+<h3>Members</h3>
+<p>Total Permits Owned: <%= @team.permit_submissions.count %> </p>
+<div class="Table mt-4">
+  <div class="Table-header">
+    <div class="Table-cell"><%= link_to "Name" %></div>
+    <div class="Table-cell"><%= link_to "Email" %></div>
+    <div class="Table-cell"><%= link_to "Role" %></div>
+    <div class="Table-cell"><%= link_to "Permits Assigned" %></div>
+    <div class="Table-cell"></div>
+  </div>
+  <div class="Table-body">
+		<% @team.users.each do |user| %>
+      <div class="Table-row">
+				<div class="Table-cell"><%= "#{user.first_name} #{user.last_name}" %></div>
+				<div class="Table-cell"><%= user.email %></div>
+				<div class="Table-cell"><%= user.role.humanize %></div>
+				<div class="Table-cell"><%= user.permit_submissions.count %></div>
+      </div>
+    <% end %>
+  </div>
+</div>
