@@ -1,13 +1,12 @@
 class PermitSubmissionsController < ApplicationController
   before_action :authenticate_user!
-
+  helper_method :sort_column, :sort_direction
   layout 'application'
 
   def index
-    sort_by = permit_index_params.fetch(:sort_by, nil)
     @search = permit_index_params.fetch(:search, nil)
-    @permits = if sort_by
-                 current_user.permit_submissions.order(sort_by)
+    @permits = if sort_column && sort_direction
+                 current_user.permit_submissions.order("#{sort_column} #{sort_direction}")
                else
                  current_user.permit_submissions
                end
@@ -64,5 +63,17 @@ class PermitSubmissionsController < ApplicationController
 
   def permit_document_params
     params.fetch(:permit_documents, {}).permit(:document, {}).fetch(:document, nil)
+  end
+
+  def sortable_columns
+    ["name", "agency", "permit_type_id", "deadline", "status", "permittee", "equipment", "location"]
+  end
+
+  def sort_column
+    sortable_columns.include?(params[:column]) ? params[:column] : "name"
+  end
+
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
   end
 end
