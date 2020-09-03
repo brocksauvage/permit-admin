@@ -25,7 +25,13 @@
     <% @permits.map do |permit| %>
       <div class="Table-row">
           <%= render 'shared/permit_row', permit: permit %>
-          <div class="Table-cell"><%= link_to "Edit permit", permit_edit_url(id: permit.id) %></div>
+          <% if permit.user.id == current_user.id %>
+            <div class="Table-cell"><%= link_to 'Show documents', permit_submission_path(id: permit.id) %></div>
+            <div class="Table-cell"><%= link_to "Edit permit", permit_edit_url(id: permit.id) %></div>
+          <% elsif current_user.manager? %>
+            <div class="Table-cell"><%= link_to 'Show documents', team_permit_submission_path(permit_id: permit.id, team_id: current_user.team.id) %></div>
+            <div class="Table-cell"><%= link_to "Edit permit", team_permit_submission_edit_path(permit_id: permit.id, team_id: current_user.team.id) %></div>
+          <% end %>
       </div>
     <% end %>
   </div>
