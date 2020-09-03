@@ -3,6 +3,7 @@
 <%= form_with(url: permits_path, method: 'get') do %>
   <%= text_field(nil, :search, value: @search) %>
   <button class="blue-button h-10">Search</button>
+  <%= link_to "Clear Search", permit_submissions_path %>
 <% end %>
 
 <button class="blue-button h-10">
@@ -11,14 +12,14 @@
 
 <div class="Table mt-4">
   <div class="Table-header">
-    <div class="Table-cell"><%= link_to "Name", permits_path(sort_by: 'name') %></div>
-    <div class="Table-cell"><%= link_to "Agency", permits_path(sort_by: 'agency') %></div>
-    <div class="Table-cell"><%= link_to "Permit", permits_path(sort_by: 'agency') %></div>
-    <div class="Table-cell"><%= link_to "Deadline", permits_path(sort_by: 'deadline') %></div>
-    <div class="Table-cell"><%= link_to "Status", permits_path(sort_by: 'deadline') %></div>
-    <div class="Table-cell"><%= link_to "Permittee", permits_path(sort_by: 'deadline') %></div>
-    <div class="Table-cell"><%= link_to "Equipment", permits_path(sort_by: 'deadline') %></div>
-    <div class="Table-cell"><%= link_to "Location", permits_path(sort_by: 'deadline') %></div>
+    <div class="Table-cell"><%= sort_link("name") %></div>
+    <div class="Table-cell"><%= sort_link("agency") %></div>
+    <div class="Table-cell"><%= sort_link("permit_type_id", "Permit") %></div>
+    <div class="Table-cell"><%= sort_link("deadline") %></div>
+    <div class="Table-cell"><%= sort_link("status") %></div>
+    <div class="Table-cell"><%= sort_link("permittee") %></div>
+    <div class="Table-cell"><%= sort_link("equipment") %></div>
+    <div class="Table-cell"><%= sort_link("location") %></div>
     <div class="Table-cell"></div>
   </div>
   <div class="Table-body">
