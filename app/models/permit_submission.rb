@@ -1,7 +1,10 @@
 class PermitSubmission < ApplicationRecord
   include PgSearch::Model
 
-  # enum status: %i[accepted filed denied]
+  enum status: {closed: "closed", ineffect: "in-effect", application: "application"}
+
+  acts_as_taggable_on :tags
+
   belongs_to :user
   belongs_to :permit_type
 
@@ -16,6 +19,8 @@ class PermitSubmission < ApplicationRecord
   attribute :user_id, :uuid
   attribute :deadline, :datetime
   attribute :agency, :string
+
+  validates :user_id, :presence => true
 
   pg_search_scope :search_permits,
                   against: %i[name agency],
