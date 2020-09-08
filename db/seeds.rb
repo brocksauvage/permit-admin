@@ -21,9 +21,9 @@ end
 unless PermitSubmission.any?
   waste_permit_type = PermitType.find_by_name("Waste Permit")
   traffic_permit_type = PermitType.find_by_name("Traffic Permit")
-  permits = [{ name: 'Trade Waste Removal License', agency: 'NY Department of Motor Vehicles', status: 'filed', deadline: Date.today, permit_type: waste_permit_type},
-             { name: 'Air pollution permit', agency: 'New York Battery Park City Authority', status: 'denied', deadline: Date.today, permit_type: waste_permit_type},
-             { name: 'Special truck pollution license', agency: 'NY Department of Motor Vehicles', status: 'accepted', deadline: Date.today, permit_type: waste_permit_type} ]
+  permits = [{ name: 'Trade Waste Removal License', agency: 'NY Department of Motor Vehicles', status: 'closed', deadline: Date.today, permit_type: waste_permit_type},
+             { name: 'Air pollution permit', agency: 'New York Battery Park City Authority', status: 'closed', deadline: Date.today, permit_type: waste_permit_type},
+             { name: 'Special truck pollution license', agency: 'NY Department of Motor Vehicles', status: 'closed', deadline: Date.today, permit_type: waste_permit_type} ]
 
 
   Team.all.each do |team|
