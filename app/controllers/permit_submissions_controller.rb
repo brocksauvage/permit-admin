@@ -6,11 +6,7 @@ class PermitSubmissionsController < ApplicationController
   def index
     sort_by = permit_index_params.fetch(:sort_by, nil)
     @search = permit_index_params.fetch(:search, nil)
-    @permits = if sort_by
-                 current_user.team.permit_submissions.order(sort_by)
-               else
-                 current_user.team.permit_submissions
-               end
+    @permits = current_user.team.permit_submissions.order(sort_by)
     @permits = @permits.search_permits(@search) if @search.present?
     @alert = Alert.order('created_at DESC').first
   end
@@ -41,9 +37,9 @@ class PermitSubmissionsController < ApplicationController
 
   def update
     @permit = current_team.permit_submissions.find(params.fetch(:id))
-    if @permit.update!(permit_params)
-      redirect_to permit_submission_path(@permit)
-    end
+    return unless @permit.update!(permit_params)
+
+    redirect_to permit_submission_path(@permit)
   end
 
   def destroy
@@ -59,7 +55,9 @@ class PermitSubmissionsController < ApplicationController
   end
 
   def permit_params
-    params.require(:permit_submission).permit(:name, :user_id, :agency, :deadline, :status, :permittee, :location, :equipment, :permit_type_id, :tag_list, permit_documents_attributes: [:document, :_destroy, :id])
+    params.require(:permit_submission).permit(:name, :user_id, :agency, :deadline, :status,
+                                              :permittee, :location, :equipment, :permit_type_id,
+                                              :tag_list, permit_documents_attributes: %i[document _destroy id])
   end
 
   def permit_document_params
