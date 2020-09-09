@@ -1,9 +1,11 @@
 class PermitSubmission < ApplicationRecord
   include PgSearch::Model
 
-  # enum status: %i[accepted filed denied]
+  enum status: {closed: "closed", ineffect: "in-effect", application: "application"}
   belongs_to :user
   belongs_to :permit_type
+
+  acts_as_taggable_on :tags
 
   alias_attribute :creator, :user
   has_many :permit_documents, dependent: :destroy

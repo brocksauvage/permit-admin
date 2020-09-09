@@ -1,8 +1,8 @@
 <div class="Table-cell"><%= link_to permit.name, permit_submission_path(id: permit.id) %></div>
-<div class="Table-cell"><%= permit.agency %></div>
-<div class="Table-cell"><%= permit.permit_type.name %></div>
+<div class="Table-cell"><%= permit.agency if permit.agency %></div>
+<div class="Table-cell"><%= permit.permit_type.name if permit.name %></div>
 <div class="Table-cell"><%= permit.deadline.to_date if permit.deadline %></div>
-<div class="Table-cell"><%= permit.status %></div>
-<div class="Table-cell"><%= permit.permittee %></div>
-<div class="Table-cell"><%= permit.equipment %></div>
-<div class="Table-cell"><%= permit.location %></div>
+<div class="Table-cell"><%= permit.status if permit.status %></div>
+<div class="Table-cell"><%= permit.permittee if permit.permittee %></div>
+<div class="Table-cell"><%= permit.equipment if permit.equipment %></div>
+<div class="Table-cell"><%= permit.location if permit.location %></div>

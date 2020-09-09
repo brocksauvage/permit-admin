@@ -34,7 +34,7 @@
         <%= f.label "Agency" %>
         <%= f.text_field :agency %>
         <%= f.label "Status" %>
-        <%= f.select :status, [["accepted", "accepted"], ["denied", "denied"], ["filed", "filed"]] %>
+        <%= f.select :status, options_for_select(PermitSubmission.statuses.map{|k,v| [v.humanize, k]}) %>
         <%= f.label "Deadline" %>
         <%= f.date_field :deadline %>
         <br>
