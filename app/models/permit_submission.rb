@@ -1,7 +1,7 @@
 class PermitSubmission < ApplicationRecord
   include PgSearch::Model
 
-  enum status: {closed: "closed", ineffect: "in-effect", application: "application"}
+  enum status: { closed: 'closed', ineffect: 'in-effect', application: 'application' }
   belongs_to :user
   belongs_to :permit_type
 
