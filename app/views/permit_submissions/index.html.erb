@@ -26,7 +26,9 @@
     <% @permits.map do |permit| %>
       <div class="Table-row">
           <%= render 'shared/permit_row', permit: permit %>
-          <div class="Table-cell"><%= link_to "Edit permit", permit_edit_url(id: permit.id) %></div>
+          <% if permit.user.id == current_user.id || current_user.manager? %>
+            <div class="Table-cell"><%= link_to "Edit permit", permit_edit_url(id: permit.id) %></div>
+          <% end %>
       </div>
     <% end %>
   </div>

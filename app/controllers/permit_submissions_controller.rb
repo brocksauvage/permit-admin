@@ -39,10 +39,10 @@ class PermitSubmissionsController < ApplicationController
   end
 
   def update
-    @permit = current_user.permit_submissions.find(params.fetch(:id))
-    if @permit.update!(permit_params)
-      redirect_to permit_submission_path(@permit)
-    end
+    @permit = current_team.permit_submissions.find(params.fetch(:id))
+    return unless @permit.update!(permit_params)
+
+    redirect_to permit_submission_path(@permit)
   end
 
   def destroy
@@ -58,7 +58,9 @@ class PermitSubmissionsController < ApplicationController
   end
 
   def permit_params
-    params.require(:permit_submission).permit(:name, :user_id, :agency, :deadline, :status, :permittee, :location, :equipment, :permit_type_id, :tag_list, permit_documents_attributes: [:document, :_destroy, :id])
+    params.require(:permit_submission).permit(:name, :user_id, :agency, :deadline, :status,
+                                              :permittee, :location, :equipment, :permit_type_id,
+                                              :tag_list, permit_documents_attributes: %i[document _destroy id])
   end
 
   def permit_document_params
